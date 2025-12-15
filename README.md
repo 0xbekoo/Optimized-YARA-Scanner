@@ -45,3 +45,21 @@ Traditional file reading methods (read / fread) cause performance loss by first 
 The YARA scanning engine reads the file content linearly from start to finish. madvise optimization is applied to inform the operating system kernel of this access pattern.
 <br><br>
 With madvise, it tells the kernel, “I will read this memory area sequentially.” The kernel uses this hint to perform aggressive Read-Ahead; that is, the kernel prepares the data from the disk to RAM before the processor even reaches that page. This dramatically reduces disk I/O latency.
+
+## **Compiling and Running the Project**
+
+Compile the project with this:
+
+```bash
+gcc -O3 -march=native -flto scanner.c -o yara_scanner -lyara -lpthread
+```
+
+Then you can run the project.
+
+The project takes two parameters from the user:
+
+```bash
+./yara_scanner <yara_dir> <sample_dirz>
+```
+
+Give the yara rule directory to the first parameter and the sample file to the second parameter.
