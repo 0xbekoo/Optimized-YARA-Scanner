@@ -11,6 +11,11 @@
 #include <time.h>
 #include <errno.h>
 
+/* Simple Helper */
+double get_time_diff(struct timespec start, struct timespec end) {
+    return (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
+}
+
 /* GLOBALS */
 typedef struct {
     long files_scanned;
